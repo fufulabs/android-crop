@@ -1,19 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#373c42"
+                android:orientation="horizontal">
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+  <RelativeLayout
+      android:id="@+id/layout_topbar"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:background="@null"
+      android:gravity="center_vertical">
 
-    <include
-        android:id="@+id/done_cancel_bar"
-        layout="@layout/crop__layout_done_cancel" />
+    <RelativeLayout
+        android:id="@+id/layout_close_button"
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:background="#161616"
+        android:gravity="center_vertical|center_horizontal">
 
-    <com.soundcloud.android.crop.CropImageView
-        android:id="@+id/crop_image"
+      <ImageView
+          android:layout_width="28dp"
+          android:layout_height="28dp"
+          android:src="@drawable/btn_close_cam"
+          android:layout_centerInParent="true"
+          android:background="@null"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_check_button"
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="#161616"
+        android:gravity="center_vertical|center_horizontal">
+
+      <ImageView
+          android:layout_width="28dp"
+          android:layout_height="28dp"
+          android:src="@drawable/icon_check_done"
+          android:layout_centerInParent="true"
+          android:background="@null"
+          />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_quest_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/crop__texture"
-        android:layout_below="@id/done_cancel_bar" />
+        android:layout_toLeftOf="@id/layout_check_button"
+        android:layout_toRightOf="@id/layout_close_button"
+        android:background="#282b32"
+        android:gravity="center_vertical">
 
+      <TextView
+          android:id="@+id/text_moments"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:text="CROP"
+          android:textColor="@android:color/white"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          android:typeface="sans"/>
+    </RelativeLayout>
+
+
+  </RelativeLayout>
+
+  <com.soundcloud.android.crop.CropImageView
+      android:id="@+id/crop_image"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#373c42"
+      android:layout_below="@id/layout_topbar"/>
 </RelativeLayout>

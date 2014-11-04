@@ -48,7 +48,7 @@ class HighlightView {
     public static final int GROW_BOTTOM_EDGE = (1 << 4);
     public static final int MOVE = (1 << 5);
 
-    private static final int DEFAULT_HIGHLIGHT_COLOR = 0xFF33B5E5;
+    private static final int DEFAULT_HIGHLIGHT_COLOR = 0xFF1A1B21;
     private static final float HANDLE_RADIUS_DP = 12f;
     private static final float OUTLINE_DP = 2f;
 

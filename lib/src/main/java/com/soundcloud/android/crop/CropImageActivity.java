@@ -95,14 +95,14 @@ public class CropImageActivity extends MonitoredActivity {
             }
         } );
 
-        findViewById( R.id.btn_cancel ).setOnClickListener( new View.OnClickListener() {
+        findViewById( R.id.layout_close_button ).setOnClickListener( new View.OnClickListener() {
             public void onClick(View v) {
                 setResult( RESULT_CANCELED );
                 finish();
             }
         } );
 
-        findViewById( R.id.btn_done ).setOnClickListener( new View.OnClickListener() {
+        findViewById( R.id.layout_check_button ).setOnClickListener( new View.OnClickListener() {
             public void onClick(View v) {
                 onSaveClicked();
             }
@@ -269,9 +269,7 @@ public class CropImageActivity extends MonitoredActivity {
                                          outWidth * sampleSize,
                                          outHeight * sampleSize );
             if (croppedImage != null) {
-                mImageView.setImageBitmapResetBase( croppedImage, true );
-                mImageView.center( true, true );
-                mImageView.mHighlightViews.clear();
+               mImageView.mHighlightViews.clear();
             }
         } else {
             try {
@@ -283,8 +281,6 @@ public class CropImageActivity extends MonitoredActivity {
             }
 
             if (croppedImage != null) {
-                mImageView.setImageRotateBitmapResetBase( new RotateBitmap( croppedImage, mExifRotation ), true );
-                mImageView.center( true, true );
                 mImageView.mHighlightViews.clear();
             }
         }
@@ -419,9 +415,9 @@ public class CropImageActivity extends MonitoredActivity {
                         matrix.postRotate( mExifRotation );
                         Bitmap rotated = Bitmap.createBitmap( croppedImage, 0, 0, croppedImage.getWidth(),
                                                               croppedImage.getHeight(), matrix, true );
-                        rotated.compress( Bitmap.CompressFormat.JPEG, 90, outputStream );
+                        rotated.compress( Bitmap.CompressFormat.JPEG, 100, outputStream );
                     } else {
-                        croppedImage.compress( Bitmap.CompressFormat.JPEG, 90, outputStream );
+                        croppedImage.compress( Bitmap.CompressFormat.JPEG, 100, outputStream );
                     }
                 }
             } catch (IOException e) {
@@ -434,7 +430,6 @@ public class CropImageActivity extends MonitoredActivity {
         }
         mHandler.post( new Runnable() {
             public void run() {
-                mImageView.clear();
                 croppedImage.recycle();
             }
         } );

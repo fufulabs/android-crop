@@ -28,8 +28,26 @@ class RotateBitmap {
     private int mRotation;
 
     public RotateBitmap(Bitmap bitmap, int rotation) {
+
+      if (rotation != 0) {
+        Matrix matrix = new Matrix();
+        switch (rotation) {
+        case 3:
+          matrix.postRotate(180);
+          break;
+        case 6:
+          matrix.postRotate(90);
+          break;
+        case 8:
+          matrix.postRotate(270);
+          break;
+        }
+        mBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+      } else {
         mBitmap = bitmap;
-        mRotation = rotation % 360;
+      }
+
+      mRotation = rotation % 360;
     }
 
     public void setRotation(int rotation) {
